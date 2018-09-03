@@ -7,7 +7,7 @@ export interface Lights {
 export class MotorLights implements Lights {
   private dc: DC;
   constructor() {
-    const motors = mh({dcs: ['M1']})
+    const motors = mh({dcs: ['M1'], address: 0x60})
     motors.init();
     this.dc = motors.dcs[0];
     this.dc.run('fwd', (err) => console.error(err));
