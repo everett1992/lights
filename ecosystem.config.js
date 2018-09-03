@@ -1,0 +1,23 @@
+module.exports = {
+  apps : [{
+    name      : 'SOCKETS',
+    script    : 'dist/server.js',
+    env: {
+      NODE_ENV: 'development'
+    },
+    env_production : {
+      NODE_ENV: 'production'
+    }
+  }],
+
+  deploy : {
+    production : {
+      user : 'pi',
+      host : '192.168.1.250',
+      ref  : 'origin/master',
+      repo : 'git@github.com:everett1992/lights.git',
+      path : '/var/www/production',
+      'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env production'
+    }
+  }
+};
