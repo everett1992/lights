@@ -14,6 +14,6 @@ type Window = {
 };
 
 (window as typeof window & Window).range.onchange = function sendchange(event: any) {
-  const level = event.currentTarget.value;
+  const level = parseInt(event.currentTarget.value);
   client.send(JSON.stringify({msg: 'lights', level}));
 }

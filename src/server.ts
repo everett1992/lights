@@ -45,7 +45,7 @@ wsServer.on('request', (req) => {
       const json = JSON.parse(message.utf8Data);
       switch (json.msg) {
         case 'lights':
-          lights.setLevel(json.level);
+          lights.setLevel(parseInt(json.level, 10));
       }
     }
   });
