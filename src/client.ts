@@ -13,7 +13,10 @@ type Window = {
   range: HTMLInputElement;
 };
 
-(window as typeof window & Window).range.onchange = function sendchange(event: any) {
+function sendchange(event: any) {
   const level = parseInt(event.currentTarget.value);
   client.send(JSON.stringify({msg: 'lights', level}));
 }
+
+(window as typeof window & Window).range.onchange = sendchange;
+(window as typeof window & Window).range.oninput = sendchange;
