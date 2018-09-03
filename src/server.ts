@@ -20,7 +20,8 @@ const server = http.createServer((req, res) => {
 
   const stream = fs.createReadStream(path.join(process.cwd(), 'dist', path.normalize(file!)));
   stream.pipe(res);
-  stream.on('error', () => {
+  stream.on('error', (err) => {
+    console.error(`error getting ${req.url}`, err);
     res.writeHead(404);
     res.end();
   });
