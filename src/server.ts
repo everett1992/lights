@@ -27,7 +27,8 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(8000, () => {
-  console.log(`Listening at ${server.address().address}:${server.address().port}`);
+  const {address, port} = (server.address() as any)
+  console.log(`Listening at ${address}:${port}`);
 });
 
 const wsServer = new websocket.server({

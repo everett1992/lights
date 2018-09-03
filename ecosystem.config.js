@@ -15,7 +15,7 @@ module.exports = {
       user : 'pi',
       host : '192.168.1.250',
       ref  : 'origin/master',
-      repo : 'git@github.com:everett1992/lights.git',
+      repo : 'https://github.com/everett1992/lights',
       path : '/var/www/production',
       'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env production'
     }
