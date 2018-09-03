@@ -1,6 +1,7 @@
 import websocket from 'websocket';
 import http from 'http';
 import {Lights, MotorLights, MockLights} from './lights';
+import {Buttons, RealButtons, MockButtons} from './buttons';
 import fs from 'fs';
 import path from 'path';
 
@@ -11,6 +12,17 @@ try {
   console.warn("could not establish connection to motors", ex);
   lights = new MockLights();
 }
+
+let buttons: Buttons;
+try {
+  buttons = new RealButtons(18,17,16);
+} catch (ex) {
+  buttons = new MockButtons();
+}
+
+buttons.whenOff(() => lights.setLevel(0));
+buttons.whenDim(() => lights.setLevel(10));
+buttons.whenBright(() => lights.setLevel(100));
 
 const server = http.createServer((req, res) => {
   console.log(`Received request for ${req.url}`);
