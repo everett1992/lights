@@ -29,7 +29,7 @@ const server = http.createServer((req, res) => {
   res.end();
 });
 
-server.listen('localhost', 8000, () => {
+server.listen(8000, 'localhost', () => {
   const {address, port} = (server.address() as any)
   console.log(`Listening at ${address}:${port}`);
 });
