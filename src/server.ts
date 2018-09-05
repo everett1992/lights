@@ -25,21 +25,11 @@ buttons.whenDim(() => lights.setLevel(10));
 buttons.whenBright(() => lights.setLevel(100));
 
 const server = http.createServer((req, res) => {
-  console.log(`Received request for ${req.url}`);
-  const file = req.url === '/'
-    ? '/index.html'
-    : req.url;
-
-  const stream = fs.createReadStream(path.join(process.cwd(), 'public', path.normalize(file!)));
-  stream.pipe(res);
-  stream.on('error', (err) => {
-    console.error(`error getting ${req.url}`, err);
-    res.writeHead(404);
-    res.end();
-  });
+  res.writeHead(404);
+  res.end();
 });
 
-server.listen(8000, () => {
+server.listen('localhost', 8000, () => {
   const {address, port} = (server.address() as any)
   console.log(`Listening at ${address}:${port}`);
 });

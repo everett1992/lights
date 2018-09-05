@@ -1,8 +1,7 @@
 import {w3cwebsocket} from 'websocket';
 
 const address = document.defaultView.location.hostname;
-const port = 8000;
-const client = new w3cwebsocket(`ws://${address}:${port}`, 'light-protocol');
+const client = new w3cwebsocket(`ws://${address}/ws`, 'light-protocol');
 
 client.onerror = () => console.error('connection error');
 client.onopen = () => {
