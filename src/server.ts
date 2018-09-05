@@ -30,7 +30,7 @@ const server = http.createServer((req, res) => {
     ? '/index.html'
     : req.url;
 
-  const stream = fs.createReadStream(path.join(process.cwd(), 'dist', path.normalize(file!)));
+  const stream = fs.createReadStream(path.join(process.cwd(), 'public', path.normalize(file!)));
   stream.pipe(res);
   stream.on('error', (err) => {
     console.error(`error getting ${req.url}`, err);
