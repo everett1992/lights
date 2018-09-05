@@ -1,6 +1,19 @@
 <html>
-<body>
-  <input type="range" id="range" min="0" max="100"/>
-  <script src="./src/client.ts"></script>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="./src/client.ts"></script>
+    <style>
+      button {
+        height:30vh;
+        font-family: monospace;
+        font-size: large;
+      }
+    </style>
+  </head>
+  <body style="display:flex; flex-direction:column; justify-content:space-around;">
+    <button value=0 click="sendchange" onClick="setLightLevel(event.currentTarget.value)">off</button>
+    <button value=100 click="sendchange" onClick="setLightLevel(event.currentTarget.value)">bright</button>
+    <button value=10 click="sendchange" onClick="setLightLevel(event.currentTarget.value)">dim</button>
+  </body>
 </html>
