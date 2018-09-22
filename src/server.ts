@@ -34,6 +34,8 @@ const server = http.createServer((req, res) => {
           console.log(`:: set lights to ${level}`);
           lights.setLevel(level);
       }
+      res.writeHead(200);
+      res.end();
     } else {
       res.writeHead(404);
       res.end();
