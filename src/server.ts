@@ -1,4 +1,3 @@
-import websocket from 'websocket';
 import http from 'http';
 import {Lights, MotorLights, MockLights} from './lights';
 import {Buttons, RealButtons, MockButtons} from './buttons';
@@ -25,35 +24,26 @@ buttons.whenDim(() => lights.setLevel(10));
 buttons.whenBright(() => lights.setLevel(100));
 
 const server = http.createServer((req, res) => {
-  res.writeHead(404);
-  res.end();
+  try {
+    if (req.url === '/msg' && req.method === 'POST') {
+      let control: string = req.headers['x-control'] as string;
+      let level: number = parseInt(req.headers['x-level'] as string, 10);
+      switch (control) {
+        case 'lights':
+          console.log(`:: set lights to ${level}`);
+          lights.setLevel(level);
+      }
+    } else {
+      res.writeHead(404);
+      res.end();
+    }
+  } catch (ex) {
+    res.writeHead(500);
+    res.end();
+  }
 });
 
 server.listen(8000, 'localhost', () => {
   const {address, port} = (server.address() as any)
   console.log(`Listening at ${address}:${port}`);
-});
-
-const wsServer = new websocket.server({
-  httpServer: server,
-  autoAcceptConnections: false,
-});
-
-wsServer.on('request', (req) => {
-  const connection = req.accept('light-protocol', req.origin);
-  connection.on('message', (message) => {
-    console.log(`Peer ${connection.remoteAddress} message`, {message});
-    if (message.type === 'utf8' && message.utf8Data) {
-      const json = JSON.parse(message.utf8Data);
-      switch (json.msg) {
-        case 'lights':
-          lights.setLevel(parseInt(json.level, 10));
-      }
-    }
-  });
-
-  connection.on('close', (reason, description) => {
-    console.log(`Peer ${connection.remoteAddress} disconnected.`,
-      {reason, description});
-  });
 });
