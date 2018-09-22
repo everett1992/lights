@@ -25,6 +25,7 @@ buttons.whenBright(() => lights.setLevel(100));
 
 const server = http.createServer((req, res) => {
   try {
+    console.log(`${req.method} ${req.url}`);
     if (req.url === '/msg' && req.method === 'POST') {
       let control: string = req.headers['x-control'] as string;
       let level: number = parseInt(req.headers['x-level'] as string, 10);
