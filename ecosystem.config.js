@@ -10,11 +10,11 @@ module.exports = {
         NODE_ENV: 'production'
       }
     },
+    {
       name: 'CADDY',
       interpreter: 'caddy',
       interpreter_args: '-conf Caddyfile -quic',
-    {
-    }
+    },
   ],
 
   deploy : {
