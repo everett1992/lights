@@ -13,7 +13,8 @@ module.exports = {
     {
       name: 'CADDY',
       interpreter: 'caddy',
-      interpreter_args: '-conf Caddyfile -quic',
+      interpreter_args: '-quic -conf',
+      script: 'Caddyfile',
     },
   ],
 
