@@ -20,7 +20,7 @@ try {
 }
 
 buttons.whenOff(() => lights.setLevel(0));
-buttons.whenDim(() => lights.setLevel(10));
+buttons.whenDim(() => lights.setLevel(2));
 buttons.whenBright(() => lights.setLevel(100));
 
 const server = http.createServer((req, res) => {
