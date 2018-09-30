@@ -1,4 +1,5 @@
 function setLightLevel(level: number) {
+  console.log(`set lights to ${level}`);
   fetch('/msg', {
     method: 'POST',
     headers: {
