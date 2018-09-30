@@ -1,14 +1,21 @@
 module.exports = {
-  apps : [{
-    name      : 'SOCKETS',
-    script    : 'dist/server.js',
-    env: {
-      NODE_ENV: 'development'
+  apps : [
+    {
+      name: 'SOCKETS',
+      script: 'dist/server.js',
+      env: {
+        NODE_ENV: 'development'
+      },
+      env_production : {
+        NODE_ENV: 'production'
+      }
     },
-    env_production : {
-      NODE_ENV: 'production'
+      name: 'CADDY',
+      interpreter: 'caddy',
+      interpreter_args: '-conf Caddyfile -quic',
+    {
     }
-  }],
+  ],
 
   deploy : {
     production : {

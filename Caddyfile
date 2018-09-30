@@ -1,0 +1,9 @@
+lights.samizdat.space
+gzip
+log stdout
+limits 10mb
+push
+root /var/www/production/current/public
+proxy /msg localhost:8000 {
+  transparent
+}
