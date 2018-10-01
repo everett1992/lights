@@ -1,9 +1,24 @@
 lights.samizdat.space
-gzip
+
+# Log to stdout, pm2 handles rotation and writing to disk.
 log stdout
-limits 10mb
-push
-root /var/www/production/current/public
+
+# Limit the size of HTTP requests. This is denial of service protection.
+# This is stupid low but it works because the service is stupid simple.
+limits 1kb
+
+# These have been set low, but arbitrarily. Low timeouts should protect against
+# some denial of service attacks. I've left idle timeouts at default.
+timeouts {
+  read 30s
+  header 30s
+  write 30s
+}
+
+# Forward requests to the lights process.
 proxy /msg localhost:8000 {
   transparent
 }
+
+# Serve files from the public deployment directory.
+root /var/www/production/current/public
