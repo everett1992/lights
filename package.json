@@ -13,11 +13,11 @@
     "@types/motor-hat": "^2.0.0",
     "@types/onoff": "0.0.28",
     "motor-hat": "^2.0.2",
-    "onoff": "^3.2.1",
-    "pm2": "^3.0.4"
+    "onoff": "^3.2.2",
+    "pm2": "^3.2.2"
   },
   "devDependencies": {
-    "typescript": "^3.0.3",
-    "parcel": "^1.9.7"
+    "parcel": "^1.10.1",
+    "typescript": "^3.1.1"
   }
 }
