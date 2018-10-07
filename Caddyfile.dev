@@ -1,9 +1,9 @@
-lights.samizdat.space
+localhost:2015
 
 # Log to stdout, pm2 handles rotation and writing to disk.
 log stdout
 
-basicauth /msg AzureDiamond hunter2
+basicauth /msg any i-know-this-isnt-secure
 
 # Limit the size of HTTP requests. This is denial of service protection.
 # This is stupid low but it works because the service is stupid simple.
@@ -23,4 +23,5 @@ proxy /msg localhost:8000 {
 }
 
 # Serve files from the public deployment directory.
-root /var/www/production/current/public
+root ./public
+

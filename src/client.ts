@@ -7,7 +7,7 @@ function setLightLevel(level: number) {
       'x-level': level.toString(),
     },
   }).then(resp => {
-    if (resp.status < 400) {
+    if (resp.status > 400) {
       window.location.href = 'https://www.youtube.com/tv#/watch/video/seek?v=ZZ5LpwO-An4&resumehttps://www.youtube.com/tv#/watch/video/seek?v=ZZ5LpwO-An4&resume';
     }
   });
