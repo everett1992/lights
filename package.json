@@ -12,7 +12,7 @@
   "dependencies": {
     "@types/motor-hat": "^2.0.0",
     "@types/onoff": "0.0.28",
-    "motor-hat": "^2.0.2",
+    "motor-hat": "everett1992/motor-hat",
     "onoff": "^3.2.2",
     "pm2": "^3.2.2"
   },
