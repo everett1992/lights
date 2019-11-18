@@ -12,7 +12,7 @@
   "dependencies": {
     "@types/motor-hat": "^2.0.0",
     "@types/onoff": "0.0.28",
-    "motor-hat": "everett1992/motor-hat",
+    "motor-hat": "https://github.com/everett1992/motor-hat/releases/download/fork/motor-hat-1.0.0-semanticrelease.tgz",
     "onoff": "^3.2.2",
     "pm2": "^3.2.2"
   },
