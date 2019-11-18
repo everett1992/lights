@@ -20,7 +20,7 @@ module.exports = {
 
   deploy : {
     production : {
-      user : 'pi',
+      user : 'caleb',
       host : '192.168.1.91',
       ref  : 'origin/master',
       repo : 'https://github.com/everett1992/lights',
